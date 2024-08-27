@@ -1,0 +1,18 @@
+{
+  "name": "docker-pw-ui",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "docker:build": "docker build . -f Dockerfile.playwright --tag docker-pw-ui",
+    "docker:test": "docker run --rm --ipc=host -v \"%cd%\"/tests:/var/app/tests/ docker-pw-ui /bin/bash -c \"npx playwright test\"",
+    "docker:test:ui": "docker run --rm --ipc=host -p 8080:8080 docker-pw-ui /bin/bash -c \"npx playwright test --ui-port=8080 --ui-host=0.0.0.0\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.46.1",
+    "@types/node": "^22.5.0"
+  }
+}
